@@ -1,0 +1,67 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+.dashed-border {
+    border-width: 1px;
+    border-style: dashed;
+}
+
+.selected-account .account-box {
+    border: 2px solid #8A2BE2;
+}
+
+.selected-account .checkmark {
+    display: block;
+}
+
+.login-btn {
+    background-color: #8A2BE2;
+    border-color: #8A2BE2;
+}
+
+nav a {
+    color: white !important;
+    text-decoration: none !important;
+}
+
+nav a:hover {
+    color: #d1d5db !important; /* This is a light gray, similar to text-gray-300 */
+}
+
+.account-box {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    border: 1px solid #ddd;
+    padding: 5px;
+    margin: 0 auto;
+}
+
+.account-box img {
+    width: 100%;
+    height: 100%;
+}
+
+.checkmark {
+    display: none;
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    background-color: #8A2BE2;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 18px;
+    font-size: 12px;
+}
