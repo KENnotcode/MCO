@@ -72,10 +72,10 @@
         <p class="text-center text-muted small">Please fill out the form below to get started</p>
         <form>
           <div class="mb-3">
-            <input type="email" class="form-control" id="email" placeholder="Username or email">
+            <input type="email" class="form-control" id="email" placeholder="Username or email" required>
           </div>
           <div class="mb-3">
-            <input type="password" class="form-control" id="password" placeholder="Password">
+            <input type="password" class="form-control" id="password" placeholder="Password" required>
           </div>
           <div class="d-flex justify-content-between align-items-center mb-3">
             <div class="form-check">
