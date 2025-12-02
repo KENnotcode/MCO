@@ -43,6 +43,7 @@ class ViolationController extends Controller
             'second_offense' => 'nullable|string',
             'third_offense' => 'nullable|string',
             'fourth_offense' => 'nullable|string',
+            'penalty' => 'nullable|string',
         ]);
 
         Violation::create($request->all());
@@ -80,6 +81,7 @@ class ViolationController extends Controller
             'second_offense' => 'nullable|string',
             'third_offense' => 'nullable|string',
             'fourth_offense' => 'nullable|string',
+            'penalty' => 'nullable|string',
         ]);
 
         $violation->update($request->all());
@@ -137,13 +139,18 @@ class ViolationController extends Controller
     public function getOffensesForViolation(Request $request)
     {
         $violation = Violation::find($request->violation_id);
-        $offenses = [];
+        $response = [
+            'offenses' => [],
+            'penalty' => null,
+        ];
+
         if ($violation) {
-            if ($violation->first_offense) $offenses[] = ['key' => 'first_offense', 'value' => '1st Offense - ' . $violation->first_offense];
-            if ($violation->second_offense) $offenses[] = ['key' => 'second_offense', 'value' => '2nd Offense - ' . $violation->second_offense];
-            if ($violation->third_offense) $offenses[] = ['key' => 'third_offense', 'value' => '3rd Offense - ' . $violation->third_offense];
-            if ($violation->fourth_offense) $offenses[] = ['key' => 'fourth_offense', 'value' => '4th Offense - ' . $violation->fourth_offense];
+            if ($violation->first_offense) $response['offenses'][] = ['key' => 'first_offense', 'value' => '1st Offense - ' . $violation->first_offense];
+            if ($violation->second_offense) $response['offenses'][] = ['key' => 'second_offense', 'value' => '2nd Offense - ' . $violation->second_offense];
+            if ($violation->third_offense) $response['offenses'][] = ['key' => 'third_offense', 'value' => '3rd Offense - ' . $violation->third_offense];
+            if ($violation->fourth_offense) $response['offenses'][] = ['key' => 'fourth_offense', 'value' => '4th Offense - ' . $violation->fourth_offense];
+            $response['penalty'] = $violation->penalty;
         }
-        return response()->json($offenses);
+        return response()->json($response);
     }
 }

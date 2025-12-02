@@ -8,7 +8,6 @@
                 <div class="card-header">
                     <h3 class="card-title">Edit Violation</h3>
                 </div>
-                <!-- /.card-header -->
                 <div class="card-body">
                     <form action="{{ route('violations.update', $violation->id) }}" method="POST">
                         @csrf
@@ -34,6 +33,10 @@
                             <input type="text" class="form-control" id="fourth_offense" name="fourth_offense" value="{{ $violation->fourth_offense }}">
                         </div>
                         <div class="form-group">
+                            <label for="penalty">Penalty</label>
+                            <input type="text" class="form-control" id="penalty" name="penalty" value="{{ $violation->penalty }}">
+                        </div>
+                        <div class="form-group">
                             <label for="violation_category_id">Category</label>
                             <select class="form-control" id="violation_category_id" name="violation_category_id" required>
                                 @foreach($categories as $category)
@@ -45,12 +48,8 @@
                         <a href="{{ route('violations.index') }}" class="btn btn-secondary">Cancel</a>
                     </form>
                 </div>
-                <!-- /.card-body -->
             </div>
-            <!-- /.card -->
         </div>
-        <!-- /.col -->
     </div>
-    <!-- /.row -->
 </div>
 @endsection

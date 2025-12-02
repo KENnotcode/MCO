@@ -8,7 +8,6 @@
                 <div class="card-header">
                     <h3 class="card-title">Users for Citation</h3>
                 </div>
-                <!-- /.card-header -->
                 <div class="card-body">
                     <table id="usersTable" class="table table-bordered table-striped">
                         <thead>
@@ -39,16 +38,11 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- /.card-body -->
             </div>
-            <!-- /.card -->
         </div>
-        <!-- /.col -->
     </div>
-    <!-- /.row -->
 </div>
 
-<!-- Citation Modal -->
 <div class="modal fade" id="citationModal" tabindex="-1" role="dialog" aria-labelledby="citationModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -85,12 +79,15 @@
                                     <option value="">Select a violation first</option>
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label>Penalty</label>
+                                <div id="penalty-display" class="form-control" style="min-height: 38px; background-color: #e9ecef;"></div>
+                            </div>
                         </form>
                     </div>
                     <div class="col-md-6">
                         <h5>Current Citations</h5>
                         <ul id="userCitationsList" class="list-group">
-                            <!-- User citations will be loaded here via AJAX -->
                         </ul>
                     </div>
                 </div>
@@ -136,15 +133,13 @@
             modal.find('#userId').val(userId);
             modal.find('#userName').text(userName);
 
-            // Clear previous data
             citationsToAdd = [];
             updateCitationList();
             $('#citationForm')[0].reset();
             $('#violation').html('<option value="">Select a category first</option>');
             $('#offense').html('<option value="">Select a violation first</option>');
+            $('#penalty-display').text('');
 
-
-            // Fetch and display user's existing citations
             loadUserCitations(userId);
         });
 
@@ -155,7 +150,7 @@
             $('#offense').html('<option value="">Select a violation first</option>');
 
             if (categoryId) {
-                $.get('{{ route('api.violations.by.category') }}', { category_id: categoryId }, function(data) {
+                $.get("{{ route('api.violations.by.category') }}", { category_id: categoryId }, function(data) {
                     violationSelect.html('<option value="">Select a violation</option>');
                     $.each(data, function(key, violation) {
                         violationSelect.append('<option value="' + violation.id + '">' + violation.name + '</option>');
@@ -169,14 +164,17 @@
         $('#violation').on('change', function() {
             var violationId = $(this).val();
             var offenseSelect = $('#offense');
+            var penaltyDisplay = $('#penalty-display');
             offenseSelect.html('<option value="">Loading...</option>');
+            penaltyDisplay.text('');
 
             if (violationId) {
-                $.get('{{ route('api.offenses.for.violation') }}', { violation_id: violationId }, function(data) {
+                $.get("{{ route('api.offenses.for.violation') }}", { violation_id: violationId }, function(data) {
                     offenseSelect.html('<option value="">Select an offense</option>');
-                    $.each(data, function(key, offense) {
+                    $.each(data.offenses, function(key, offense) {
                         offenseSelect.append('<option value="' + offense.key + '">' + offense.value + '</option>');
                     });
+                    penaltyDisplay.text(data.penalty || 'N/A');
                 });
             } else {
                 offenseSelect.html('<option value="">Select a violation first</option>');
@@ -248,7 +246,7 @@
         $('#saveCitations').on('click', function() {
             if (citationsToAdd.length > 0) {
                 $.ajax({
-                    url: '{{ route('citations.store') }}',
+                    url: "{{ route('citations.store') }}",
                     type: 'POST',
                     data: {
                         _token: '{{ csrf_token() }}',
@@ -263,7 +261,6 @@
                     }
                 });
             } else {
-                // If nothing to add, just close the modal
                 $('#citationModal').modal('hide');
             }
         });

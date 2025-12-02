@@ -18,9 +18,19 @@
 
         <!-- Styles / Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <style>
+            .bg-map {
+                background-image: url('{{ asset('/images/mapbg.png') }}');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                min-height: 100vh;
+            }
+        </style>
     </head>
     <body class="bg-gray-200">
-        <div style="background-image: url('{{ asset("/images/mapbg.png") }}'); background-size: cover; background-position: center; background-repeat: no-repeat; min-height: 100vh;">
+        <div class="bg-map">
             <div class="p-8">
                 <header class="w-full lg:max-w-4xl mx-auto text-sm">
                     <nav class="flex items-center justify-between p-2 bg-[#2D2D37] rounded-full text-white">
@@ -54,7 +64,7 @@
         <div class="d-flex justify-content-around text-center mb-4">
             <div id="user-account" class="account-type selected-account" style="cursor: pointer;">
                 <div class="account-box">
-                    <img src="images/user.png" alt="User" width="80" height="80">
+                    <img src="{{ asset('images/user.png') }}" alt="User" width="80" height="80">
                     <div class="checkmark">✔</div>
                 </div>
                 <p>User</p>
@@ -62,7 +72,7 @@
             
             <div id="admin-account" class="account-type" style="cursor: pointer;">
                 <div class="account-box">
-                    <img src="images/admin.png" alt="Administrator" width="90" height="90">
+                    <img src="{{ asset('images/admin.png') }}" alt="Administrator" width="90" height="90">
                     <div class="checkmark">✔</div>
                 </div>
                 <p>Administrator</p>

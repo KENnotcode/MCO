@@ -36,7 +36,6 @@
                 <div class="card-header">
                     <h3 class="card-title">Violations</h3>
                 </div>
-                <!-- /.card-header -->
                 <div class="card-body">
                     @if(session('success'))
                         <div class="alert alert-success">
@@ -57,6 +56,7 @@
                                 <th>2nd Offense</th>
                                 <th>3rd Offense</th>
                                 <th>4th Offense</th>
+                                <th>Penalty</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -69,6 +69,7 @@
                                 <td>{{ $violation->second_offense }}</td>
                                 <td>{{ $violation->third_offense }}</td>
                                 <td>{{ $violation->fourth_offense }}</td>
+                                <td>{{ $violation->penalty }}</td>
                                 <td>
                                     <a href="{{ route('violations.edit', $violation->id) }}" class="btn btn-info btn-sm">Edit</a>
                                     <form action="{{ route('violations.destroy', $violation->id) }}" method="POST" style="display: inline-block;">
@@ -82,16 +83,11 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- /.card-body -->
             </div>
-            <!-- /.card -->
         </div>
-        <!-- /.col -->
     </div>
-    <!-- /.row -->
 </div>
 
-<!-- Add Category Modal -->
 <div class="modal fade" id="addCategoryModal" tabindex="-1" role="dialog" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -118,7 +114,6 @@
     </div>
 </div>
 
-<!-- Manage Categories Modal -->
 <div class="modal fade" id="manageCategoriesModal" tabindex="-1" role="dialog" aria-labelledby="manageCategoriesModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -169,8 +164,6 @@
     </div>
 </div>
 
-
-<!-- Add Violation Modal -->
 <div class="modal fade" id="addViolationModal" tabindex="-1" role="dialog" aria-labelledby="addViolationModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -213,6 +206,10 @@
                     <div class="form-group">
                         <label for="fourth_offense">4th Offense</label>
                         <input type="text" class="form-control" id="fourth_offense" name="fourth_offense">
+                    </div>
+                    <div class="form-group">
+                        <label for="penalty">Penalty</label>
+                        <input type="text" class="form-control" id="penalty" name="penalty">
                     </div>
                 </div>
                 <div class="modal-footer">

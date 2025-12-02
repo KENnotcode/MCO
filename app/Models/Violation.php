@@ -14,6 +14,7 @@ class Violation extends Model
         'second_offense',
         'third_offense',
         'fourth_offense',
+        'penalty',
         'violation_category_id',
     ];
 
