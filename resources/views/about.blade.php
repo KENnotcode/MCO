@@ -1,4 +1,4 @@
 @extends('home')
 @section('content')
-<h1>this sis the avout page</h1>
+<h1>It should redirect to this if login successfull</h1>
 @endsection

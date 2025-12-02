@@ -70,16 +70,17 @@
         </div>
         <p id="greeting-text" class="text-center text-muted small">Hello User!</p>
         <p class="text-center text-muted small">Please fill out the form below to get started</p>
-        <form>
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
           <div class="mb-3">
-            <input type="email" class="form-control" id="email" placeholder="Username or email" required>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Username or email" required>
           </div>
           <div class="mb-3">
-            <input type="password" class="form-control" id="password" placeholder="Password" required>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
           </div>
           <div class="d-flex justify-content-between align-items-center mb-3">
             <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="rememberMe">
+              <input type="checkbox" class="form-check-input" id="rememberMe" name="remember">
               <label class="form-check-label" for="rememberMe">Remember me</label>
             </div>
             <button type="submit" class="btn btn-primary login-btn" style="background-color: blue;">LOGIN</button>
