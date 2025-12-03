@@ -59,6 +59,16 @@
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
       </li>
+      <li class="nav-item">
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <a href="{{ route('logout') }}" class="nav-link"
+               onclick="event.preventDefault();
+                        this.closest('form').submit();">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+        </form>
+      </li>
       
     </ul>
   </nav>
@@ -80,7 +90,7 @@
           <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</a>
         </div>
       </div>
 

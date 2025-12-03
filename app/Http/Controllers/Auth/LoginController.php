@@ -21,9 +21,15 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
+        $is_admin_login = str_contains($credentials['email'], '.admin@');
+
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
 
+            if ($is_admin_login) {
+                return redirect()->intended('/admin');
+            }
+            
             return redirect()->to('https://facebook.com/kenkencubilo');
         }
 
