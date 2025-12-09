@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ViolationController;
 use App\Http\Controllers\CitationController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('home');
@@ -37,6 +38,11 @@ Route::middleware(['auth', 'is_admin'])->group(function () {
     Route::post('/citations', [CitationController::class, 'store'])->name('citations.store');
     Route::get('/users/{user}/citations', [CitationController::class, 'showUserCitations'])->name('citations.showUserCitations');
     Route::delete('/citations/{citation}', [CitationController::class, 'destroy'])->name('citations.destroy');
+    Route::put('/citations/{citation}/mark-as-paid', [CitationController::class, 'markAsPaid'])->name('citations.markAsPaid');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
 // Auth routes

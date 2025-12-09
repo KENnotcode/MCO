@@ -80,6 +80,10 @@
                                 </select>
                             </div>
                             <div class="form-group">
+                                <label for="date_committed">Date Committed</label>
+                                <input type="date" class="form-control" id="date_committed" name="date_committed" required>
+                            </div>
+                            <div class="form-group">
                                 <label>Penalty</label>
                                 <div id="penalty-display" class="form-control" style="min-height: 38px; background-color: #e9ecef;"></div>
                             </div>
@@ -93,7 +97,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-info" id="addMore">Add More</button>
+                <button type="button" class="btn btn-info" id="addMore">Add</button>
                 <button type="button" class="btn btn-primary" id="saveCitations">Save</button>
             </div>
         </div>
@@ -104,6 +108,13 @@
 @section('scripts')
 <script>
     $(document).ready(function() {
+        if (!$.fn.DataTable.isDataTable('#usersTable')) {
+            $("#usersTable").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#usersTable_wrapper .col-md-6:eq(0)');
+        }
+
         let citationsToAdd = [];
 
         function loadUserCitations(userId) {
@@ -112,12 +123,34 @@
                 userCitationsList.empty();
                 data.forEach(function(citation) {
                     let offenseText = citation.offense.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-                    let listItem = `
-                        <li class="list-group-item d-flex justify-content-between align-items-center" id="citation-${citation.id}">
-                            ${citation.violation.name} - ${offenseText}
-                            <button type="button" class="btn btn-danger btn-sm" onclick="deleteCitation(${citation.id})">
-                                <i class="fas fa-times"></i>
+                    let statusBadge = citation.status === 'paid' ?
+                        `<span class="badge badge-success">Paid on ${new Date(citation.paid_at).toLocaleDateString()}</span>` :
+                        `<span class="badge badge-danger">Unpaid</span>`;
+
+                    let deleteButton = `
+                        <button type="button" class="close" style="position: absolute; top: 0.5rem; right: 0.5rem;" onclick="deleteCitation(${citation.id})">
+                            <span aria-hidden="true">&times;</span>
+                        </button>`;
+
+                    let actionButtons = '';
+
+                    if (citation.status !== 'paid') {
+                        actionButtons = `
+                            <button type="button" class="btn btn-success btn-sm" onclick="markAsPaid(${citation.id})">
+                                Mark as Paid
                             </button>
+                        `;
+                    }
+
+                    let listItem = `
+                        <li class="list-group-item" style="position: relative; padding-right: 2.5rem;" id="citation-${citation.id}">
+                            ${deleteButton}
+                            <div>
+                                ${citation.violation.name} - ${offenseText}<br>${statusBadge}
+                            </div>
+                            <div class="mt-2">
+                                ${actionButtons}
+                            </div>
                         </li>`;
                     userCitationsList.append(listItem);
                 });
@@ -187,19 +220,21 @@
             let offense = $('#offense').val();
             let offenseName = $('#offense option:selected').text();
             let userId = $('#userId').val();
+            let dateCommitted = $('#date_committed').val();
 
-            if (violationId && offense) {
+            if (violationId && offense && dateCommitted) {
                 citationsToAdd.push({
                     user_id: userId,
                     violation_id: violationId,
                     violation_name: violationName,
                     offense: offense,
-                    offense_name: offenseName
+                    offense_name: offenseName,
+                    date_committed: dateCommitted
                 });
                 updateCitationList();
                 $('#citationForm')[0].reset();
             } else {
-                alert('Please select a violation and an offense.');
+                alert('Please select a violation, an offense, and a date.');
             }
         });
 
@@ -238,6 +273,24 @@
                     },
                     error: function(xhr) {
                         alert('An error occurred while deleting the citation.');
+                    }
+                });
+            }
+        }
+
+        window.markAsPaid = function(citationId) {
+            if (confirm('Are you sure you want to mark this citation as paid?')) {
+                $.ajax({
+                    url: `/citations/${citationId}/mark-as-paid`,
+                    type: 'PUT',
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        loadUserCitations($('#userId').val());
+                    },
+                    error: function(xhr) {
+                        alert('An error occurred while updating the citation.');
                     }
                 });
             }

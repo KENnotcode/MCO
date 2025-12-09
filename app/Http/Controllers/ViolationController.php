@@ -18,7 +18,7 @@ class ViolationController extends Controller
 
         $violations = Violation::when($selectedCategoryId, function ($query, $selectedCategoryId) {
             return $query->where('violation_category_id', $selectedCategoryId);
-        })->latest()->paginate(10);
+        })->latest()->get();
 
         return view('violations.index', compact('violations', 'categories', 'selectedCategoryId'));
     }

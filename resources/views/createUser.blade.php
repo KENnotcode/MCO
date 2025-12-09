@@ -29,7 +29,7 @@
         <div class="card shadow-sm">
             <div class="card-body">
 
-                <table class="table table-hover align-middle">
+                <table id="usersTable" class="table table-hover align-middle">
                     <thead class="table-light">
                         <tr>
                             <th>Last Name</th>
@@ -69,10 +69,7 @@
                     </tbody>
                 </table>
 
-                <!--  Pagination  -->
-                <div class="mt-3 float-sm-right">
-                    {{ $users->links() }}
-                </div>
+                
             </div>
         </div>
 
@@ -122,4 +119,19 @@
     </div>
   </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+$(document).ready(function() {
+    if (!$.fn.DataTable.isDataTable('#usersTable')) {
+        $("#usersTable").DataTable({
+            "responsive": true, 
+            "lengthChange": false, 
+            "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#usersTable_wrapper .col-md-6:eq(0)');
+    }
+});
+</script>
 @endsection

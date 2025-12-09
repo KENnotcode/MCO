@@ -30,7 +30,7 @@ class LoginController extends Controller
                 return redirect()->intended('/admin');
             }
             
-            return redirect()->to('https://facebook.com/kenkencubilo');
+            return redirect()->intended('dashboard');
         }
 
         return back()->withErrors([

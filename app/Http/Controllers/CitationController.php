@@ -31,13 +31,32 @@ class CitationController extends Controller
             'citations.*.user_id' => 'required|exists:users,id',
             'citations.*.violation_id' => 'required|exists:violations,id',
             'citations.*.offense' => 'required|string',
+            'citations.*.date_committed' => 'required|date',
         ]);
 
         foreach ($request->citations as $citationData) {
+            $offenseLevel = 0;
+            switch ($citationData['offense']) {
+                case 'first_offense':
+                    $offenseLevel = 1;
+                    break;
+                case 'second_offense':
+                    $offenseLevel = 2;
+                    break;
+                case 'third_offense':
+                    $offenseLevel = 3;
+                    break;
+                case 'fourth_offense':
+                    $offenseLevel = 4;
+                    break;
+            }
+
             Citation::create([
                 'user_id' => $citationData['user_id'],
                 'violation_id' => $citationData['violation_id'],
                 'offense' => $citationData['offense'],
+                'offense_level' => $offenseLevel,
+                'date_committed' => $citationData['date_committed'],
             ]);
         }
 
@@ -53,6 +72,18 @@ class CitationController extends Controller
         return response()->json($citations);
     }
 
+    /**
+     * Mark the specified resource as paid.
+     */
+    public function markAsPaid(Citation $citation)
+    {
+        $citation->update([
+            'status' => 'paid',
+            'paid_at' => now(),
+        ]);
+
+        return response()->json(['success' => 'Citation marked as paid.']);
+    }
 
     /**
      * Remove the specified resource from storage.

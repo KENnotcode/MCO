@@ -10,6 +10,15 @@ class Citation extends Model
         'user_id',
         'violation_id',
         'offense',
+        'offense_level',
+        'date_committed',
+        'status',
+        'paid_at',
+    ];
+
+    protected $casts = [
+        'date_committed' => 'date',
+        'paid_at' => 'datetime',
     ];
 
     public function user()
