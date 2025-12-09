@@ -41,19 +41,21 @@ class UserSeeder extends Seeder
             }
 
             $firstName = $userData['first_name'];
+            $middleName = $userData['middle_name'] ?? null;
             $lastName = $userData['last_name'];
             $extension = $userData['extension'] ?? null;
             $email = $userData['email'];
             $password = $userData['password'];
 
-            $fullName = $firstName . ' ' . $lastName . ($extension ? ' ' . $extension : '');
+            $fullName = $firstName . ($middleName ? ' ' . $middleName : '') . ' ' . $lastName . ($extension ? ' ' . $extension : '');
 
             $this->command->info("Processing user: {$fullName}");
 
-            $user = User::firstOrCreate(
+            $user = User::updateOrCreate(
                 ['email' => $email],
                 [
                     'first_name' => $firstName,
+                    'middle_name' => $middleName,
                     'last_name' => $lastName,
                     'extension_name' => $extension,
                     'password' => Hash::make($password),
@@ -64,7 +66,7 @@ class UserSeeder extends Seeder
             if ($user->wasRecentlyCreated) {
                 $this->command->info(" -> Created: {$email}");
             } else {
-                $this->command->warn(" -> Skipped (already exists): {$email}");
+                $this->command->info(" -> Updated: {$email}");
             }
         }
         $this->command->info('User seeding completed.');
