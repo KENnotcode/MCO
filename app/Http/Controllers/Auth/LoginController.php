@@ -21,12 +21,10 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
-        $is_admin_login = str_contains($credentials['email'], '.admin@');
-
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
 
-            if ($is_admin_login) {
+            if (Auth::user()->is_admin) {
                 return redirect()->intended('/admin');
             }
             

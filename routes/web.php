@@ -41,7 +41,7 @@ Route::middleware(['auth', 'is_admin'])->group(function () {
     Route::put('/citations/{citation}/mark-as-paid', [CitationController::class, 'markAsPaid'])->name('citations.markAsPaid');
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'is_user'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
