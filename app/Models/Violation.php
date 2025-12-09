@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Violation extends Model
 {
-    // use HasFactory;
-
     protected $fillable = [
         'name',
         'first_offense',

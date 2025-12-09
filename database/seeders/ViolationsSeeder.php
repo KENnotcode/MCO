@@ -9,9 +9,6 @@ use App\Models\Violation;
 
 class ViolationsSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
@@ -30,20 +27,17 @@ class ViolationsSeeder extends Seeder
                 continue;
             }
 
-            // If a line does not start with '->', it's a new category.
             if (strpos($line, '->') === false) {
                 $currentCategory = ViolationCategory::firstOrCreate(['name' => $line]);
                 continue;
             }
 
-            // If we are here, it's a violation line. It must belong to the current category.
             if ($currentCategory) {
-                // Remove the initial '-> ' and split the violation from the fees/penalty
                 $lineContent = ltrim($line, '-> ');
                 $parts = preg_split('/->\s*(Fees|Penalty)\s*/', $lineContent, -1, PREG_SPLIT_DELIM_CAPTURE);
 
                 if (count($parts) < 3) {
-                    continue; // Skip malformed lines
+                    continue;
                 }
 
                 $violationName = trim($parts[0]);
@@ -58,7 +52,6 @@ class ViolationsSeeder extends Seeder
                     }
                 }
                 
-                // Clean up the penalty string by removing the outer parentheses
                 if (substr($penaltyString, 0, 1) == '(' && substr($penaltyString, -1) == ')') {
                     $penaltyString = trim(substr($penaltyString, 1, -1));
                 }
@@ -69,9 +62,7 @@ class ViolationsSeeder extends Seeder
                     'third_offense' => null,
                 ];
 
-                // Special handling for "Colorum violation" because its fee structure is unique
                 if (strpos($violationName, 'Colorum violation') !== false) {
-                    // This is a very specific parser for the complex Colorum fee line.
                     if (preg_match('/Bus:\s*Php\s*([\d,]+\.\d{2})/', $feesString, $m)) $fees['first_offense'] = 1000000.00;
                     elseif (preg_match('/Truck:\s*Php\s*([\d,]+\.\d{2})/', $feesString, $m)) $fees['first_offense'] = 200000.00;
                     elseif (preg_match('/Van:\s*Php\s*([\d,]+\.\d{2})/', $feesString, $m)) $fees['first_offense'] = 200000.00;
@@ -79,7 +70,6 @@ class ViolationsSeeder extends Seeder
                     elseif (preg_match('/MC:\s*Php\s*([\d,]+\.\d{2})/', $feesString, $m)) $fees['first_offense'] = 6000.00;
                     elseif (preg_match('/Jeepney:\s*Php\s*([\d,]+\.\d{2})/', $feesString, $m)) $fees['first_offense'] = 50000.00;
                 } else {
-                    // Standard fee parser for "1st: Php 1,234.00" format
                     preg_match_all('/(\d+)(?:st|nd|rd|th):\s*Php\s*([\d,]+\.\d{2})/', $feesString, $feeMatches);
                     foreach ($feeMatches[1] as $index => $offenseNum) {
                         $feeValue = (float)str_replace(',', '', $feeMatches[2][$index]);
@@ -134,7 +124,6 @@ class ViolationsSeeder extends Seeder
             'penalty' => $violationData['penalty'] ?? null,
         ]);
 
-        // Reset for next violation
         $violationData = [];
     }
 }

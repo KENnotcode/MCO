@@ -17,7 +17,6 @@ use App\Models\User;
 Route::get('/', function () {
     return view('home');
 });
-// ... existing code ...
 Route::middleware(['auth', 'is_admin'])->group(function () {
     Route::get('/admin', function () {
         return view('admin');

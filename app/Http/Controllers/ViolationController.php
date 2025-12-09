@@ -8,9 +8,6 @@ use Illuminate\Http\Request;
 
 class ViolationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index(Request $request)
     {
         $categories = ViolationCategory::all();
@@ -23,17 +20,11 @@ class ViolationController extends Controller
         return view('violations.index', compact('violations', 'categories', 'selectedCategoryId'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('violations.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -51,27 +42,17 @@ class ViolationController extends Controller
         return redirect()->route('violations.index', ['category_id' => $request->violation_category_id])
             ->with('success', 'Violation created successfully.');
     }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(Violation $violation)
     {
         return view('violations.show', compact('violation'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Violation $violation)
     {
         $categories = ViolationCategory::all();
         return view('violations.edit', compact('violation', 'categories'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Violation $violation)
     {
         $request->validate([
@@ -90,9 +71,6 @@ class ViolationController extends Controller
             ->with('success', 'Violation updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Violation $violation)
     {
         $violation->delete();
@@ -110,10 +88,8 @@ class ViolationController extends Controller
 
     public function destroyCategory(ViolationCategory $category)
     {
-        // Delete all associated violations
         $category->violations()->delete();
 
-        // Delete the category
         $category->delete();
 
         return redirect()->route('violations.index')->with('success', 'Category and all associated violations have been deleted successfully.');

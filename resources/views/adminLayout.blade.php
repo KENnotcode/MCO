@@ -109,7 +109,6 @@
                   <i class="nav-icon fas fa-id-badge"></i>
                     Create Users
                     <span class="right badge badge-danger">{{ $userCount }}</span>
-                    <!-- <h3>{{ $userCount }}</h3> -->
                   </p>
                 </a>
               </li>

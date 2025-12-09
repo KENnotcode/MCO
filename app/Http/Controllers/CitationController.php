@@ -10,9 +10,6 @@ use Illuminate\Http\Request;
 
 class CitationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $users = User::latest()->get();
@@ -21,9 +18,6 @@ class CitationController extends Controller
         return view('citations.index', compact('users', 'violations', 'categories'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -63,18 +57,12 @@ class CitationController extends Controller
         return response()->json(['success' => 'Citations saved successfully.']);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function showUserCitations(User $user)
     {
         $citations = $user->citations()->with('violation')->get();
         return response()->json($citations);
     }
 
-    /**
-     * Mark the specified resource as paid.
-     */
     public function markAsPaid(Citation $citation)
     {
         $citation->update([
@@ -85,9 +73,6 @@ class CitationController extends Controller
         return response()->json(['success' => 'Citation marked as paid.']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Citation $citation)
     {
         $citation->delete();
