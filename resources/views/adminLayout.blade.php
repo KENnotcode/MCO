@@ -122,6 +122,11 @@
   </aside>
 
   <div class="content-wrapper">
+    @if(session('error'))
+        <div class="alert alert-danger m-3">
+            {{ session('error') }}
+        </div>
+    @endif
     @yield('content')
   </div>
 

@@ -16,6 +16,6 @@ class IsUser
             return $next($request);
         }
 
-        return redirect('/admin');
+        return redirect('/admin')->with('error', 'You are logged in as an admin. Please log out to access the client page.');
     }
 }
