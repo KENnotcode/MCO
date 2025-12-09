@@ -22,7 +22,7 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+                <h3>{{ $userCount }}</h3>
 
                 <p>Users</p>
               </div>

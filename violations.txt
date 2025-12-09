@@ -1,0 +1,38 @@
+Permits and License-related violations
+-> Driving without a valid driver’s license or conductor’s permit (expired, revoked, suspended, inappropriate restriction/classification, fake license, foreign license beyond 90 days, student permit without licensed driver) -> Fees (1st: Php 3,000.00, 2nd: N/A, 3rd: N/A, 4th: N/A) -> Penalty (Disqualified from acquiring a driver’s license and driving a motor vehicle for one (1) year after payment of the fine)
+-> Driving a motor vehicle used in the commission of a crime -> Fees (1st: Php 10,000.00, 2nd: N/A, 3rd: N/A, 4th: N/A) -> Penalty (Driver’s license confiscated and revoked)
+-> Commission of a crime in the course of apprehension -> Fees (1st: Php 10,000.00, 2nd: N/A, 3rd: N/A, 4th: N/A) -> Penalty (Driver’s license confiscated and revoked)
+-> Driving under the influence of alcohol, drugs, or similar substance -> Fees (1st: N/A, 2nd: N/A, 3rd: N/A, 4th: N/A) -> Penalty (Imprisonment and license confiscation depending on severity and involvement in injury or death)
+-> Reckless driving -> Fees (1st: Php 2,000.00, 2nd: Php 3,000.00, 3rd: Php 10,000.00, 4th: N/A) -> Penalty (License suspended for 3 months on 3rd offense; revoked on 4th offense)
+-> Submission of fake documents for driver’s license application -> Fees (1st: Php 3,000.00, 2nd: N/A, 3rd: N/A, 4th: N/A) -> Penalty (Driver’s license confiscated and revoked)
+-> Failure to wear seatbelt device / allowing child ≤6 years old in front seat -> Fees (1st: Php 1,000.00, 2nd: Php 2,000.00, 3rd: Php 5,000.00, 4th: N/A) -> Penalty (License suspended for 1 week on 3rd offense)
+-> Failure to require passengers to wear seatbelt / failure to post signage (PUV) -> Fees (1st: Php 3,000.00, 2nd: N/A, 3rd: N/A, 4th: N/A) -> Penalty (License suspended for 1 week)
+-> Failure to wear standard motorcycle helmet / fake PS/IIC sticker / riding without helmet -> Fees (1st: Php 1,500.00, 2nd: Php 3,000.00, 3rd: Php 5,000.00, 4th: Php 10,000.00) -> Penalty (License confiscated)
+-> Failure to carry driver’s license, Certificate of Registration, or OR while driving -> Fees (1st: Php 1,000.00, 2nd: N/A, 3rd: N/A, 4th: N/A) -> Penalty (N/A)
+-> All other violations of traffic rules and regulations (parking, illegal turn, overtaking, failure to yield, obstruction, etc.) -> Fees (1st: Php 1,000.00, 2nd: N/A, 3rd: N/A, 4th: N/A) -> Penalty (N/A)
+
+Violations in Connection with Motor Vehicle Registration, Renewal, or Operation
+-> Driving an unregistered motor vehicle (expired, revoked, suspended, invalid registration, fake engine/chassis) -> Fees (1st: Php 10,000.00, 2nd: N/A, 3rd: N/A, 4th: N/A) -> Penalty (Plates and registration confiscated)
+-> Unauthorized modification (color change, manufacturer’s specification alteration) -> Fees (1st: Php 5,000.00, 2nd: N/A, 3rd: N/A, 4th: N/A) -> Penalty (License confiscated)
+-> Operating a right-hand drive motor vehicle -> Fees (1st: Php 50,000.00, 2nd: N/A, 3rd: N/A, 4th: N/A) -> Penalty (Vehicle confiscated)
+-> Operating vehicle with defective/unauthorized accessories or parts (lights, brakes, mirrors, mufflers, etc.) -> Fees (1st: Php 5,000.00, 2nd: N/A, 3rd: N/A, 4th: N/A) -> Penalty (License confiscated)
+-> Failure to attach or improper attachment/tampering of license plates/third plate sticker -> Fees (1st: Php 5,000.00, 2nd: N/A, 3rd: N/A, 4th: N/A) -> Penalty (License confiscated)
+-> Smoke belching (emission violation) -> Fees (1st: Php 2,000.00, 2nd: Php 4,000.00, 3rd: Php 6,000.00, 4th: N/A) -> Penalty (Registration suspended)
+-> Fraud related to MV registration or renewal -> Fees (1st: Php 3,000.00, 2nd: N/A, 3rd: N/A, 4th: N/A) -> Penalty (License confiscated)
+-> Other violations related to registration/renewal/operation -> Fees (1st: Php 2,000.00, 2nd: N/A, 3rd: N/A, 4th: N/A) -> Penalty (N/A)
+
+Violations in Connection with Dimension, Specifications, Weight and Load Limits
+-> Load extending beyond projected width without permit -> Fees (1st: Php 1,000.00, 2nd: N/A, 3rd: N/A, 4th: N/A) -> Penalty (N/A)
+-> Axle overloading (exceeding 13,500 kg per axle or 150% of gross weight) -> Fees (1st: 25% of MVUC, 2nd: N/A, 3rd: N/A, 4th: N/A) -> Penalty (Registration suspended)
+-> Operating passenger bus/truck with cargo exceeding 160 kg -> Fees (1st: Php 1,000.00 (driver & conductor), 2nd: N/A, 3rd: N/A, 4th: N/A) -> Penalty (N/A)
+
+Violations in Connection with Franchise
+-> Colorum violation (PUV operating without authority, outside route, expired CPC, etc.) -> Fees (Bus: Php 1,000,000.00, Truck: Php 200,000.00, Van: Php 200,000.00, Sedan: Php 120,000.00, MC: Php 6,000.00, Jeepney: Php 50,000.00 — all 1st offense only; subsequent penalties specified but no fees) -> Fees (1st: As above, 2nd: N/A, 3rd: N/A, 4th: N/A) -> Penalty (Vehicle impounded for 3 months; driver’s license confiscated and revoked; CPC cancelled)
+-> Refusal to render service to public/convey passenger -> Fees (1st: Php 5,000.00, 2nd: Php 10,000.00, 3rd: Php 15,000.00, 4th: N/A) -> Penalty (Driver’s license suspended)
+-> Overcharging or undercharging of fare -> Fees (1st: Php 5,000.00, 2nd: Php 10,000.00, 3rd: Php 15,000.00, 4th: N/A) -> Penalty (Driver’s license suspended)
+-> Failure to provide proper body markings -> Fees (1st: Php 5,000.00, 2nd: Php 10,000.00, 3rd: Php 15,000.00, 4th: N/A) -> Penalty (Driver’s license suspended)
+-> No franchise/CPC/evidence of franchise presented -> Fees (1st: Php 5,000.00, 2nd: Php 10,000.00, 3rd: Php 15,000.00, 4th: N/A) -> Penalty (Driver’s license suspended)
+-> Fraud/falsities (fake CPC, OR/CR, plates, stickers, tags) -> Fees (1st: N/A, 2nd: N/A, 3rd: N/A, 4th: N/A) -> Penalty (Driver’s license confiscated and revoked; CPC cancelled)
+-> Violation of color scheme/design without authority -> Fees (1st: Php 5,000.00, 2nd: Php 10,000.00, 3rd: Php 15,000.00, 4th: N/A) -> Penalty (Driver’s license suspended)
+-> Breach of franchise conditions (2011 Revised CPC terms) -> Fees (1st: Php 5,000.00, 2nd: Php 10,000.00, 3rd: Php 15,000.00, 4th: N/A) -> Penalty (Driver’s license suspended)
+-> Failure to display International Symbol of Accessibility / refusal to transport PWDs -> Fees (1st: Php 50,000.00, 2nd: Php 75,000.00 + Php 500/day impounding, 3rd: Php 15,000.00, 4th: N/A) -> Penalty (Driver’s license suspended; vehicle impounded)

@@ -7,14 +7,17 @@ use App\Http\Controllers\ViolationController;
 use App\Http\Controllers\CitationController;
 use App\Http\Controllers\DashboardController;
 
+
 Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/about', function () {
-    return view('about');
-});
+use App\Models\User;
 
+Route::get('/', function () {
+    return view('home');
+});
+// ... existing code ...
 Route::middleware(['auth', 'is_admin'])->group(function () {
     Route::get('/admin', function () {
         return view('admin');
@@ -53,5 +56,8 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 // API routes
 Route::get('/api/violations-by-category', [ViolationController::class, 'getViolationsByCategory'])->name('api.violations.by.category');
 Route::get('/api/offenses-for-violation', [ViolationController::class, 'getOffensesForViolation'])->name('api.offenses.for.violation');
+
+
+
 
 
