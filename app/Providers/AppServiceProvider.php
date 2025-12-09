@@ -19,7 +19,9 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
 
         View::composer(['adminLayout', 'admin'], function ($view) {
-            $userCount = User::where('is_admin', false)->count();
+            $userCount = User::where('is_admin', false)
+                             ->where('email', 'not like', '%admin%')
+                             ->count();
             $violationCount = Violation::count();
             $view->with('userCount', $userCount)->with('violationCount', $violationCount);
         });
