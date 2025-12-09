@@ -98,7 +98,7 @@
                   <p>
                   <i class="nav-icon fas fa-list"></i>
                     List of Violations
-                    <span class="right badge badge-danger">99+</span>
+                    <span class="right badge badge-danger">{{ $violationCount }}</span>
                   </p>
                 </a>
               </li>
