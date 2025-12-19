@@ -64,7 +64,7 @@ first_name:Carlo Joseph|middle_name:Lim|last_name:Ramos|extension:|email:carlora
 
 first_name:Denise Ann|middle_name:Aquino|last_name:Bautista|extension:|email:denisebautista@gmail.com|password:password
 
-first_name:Edward James|middle_name:Castillo|last_name:Cruz|extension:|email:edwardcruz@gmail.com|password:password
+first_name:Edward James|middle_name:Castillo|last_name:Cruzz|extension:|email:edwardcruz@gmail.com|password:password
 
 first_name:Fiona Grace|middle_name:Flores|last_name:Navarro|extension:|email:fionanavarro@gmail.com|password:password
 
